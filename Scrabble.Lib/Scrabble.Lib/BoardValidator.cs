@@ -14,7 +14,7 @@ namespace Scrabble.Lib
 
         public int ScoreWord(IEnumerable<(Square Square, Tile Tile)> laidTiles, IList<Square> boardSquares)
         {
-            return new BoardScoreCalculator().ScoreWord(laidTiles, boardSquares);
+            return BoardScoreCalculator.ScoreWord(laidTiles, boardSquares);
         }
 
         protected abstract void ValidateWordPositionImpl(IEnumerable<TilePoint> tilePoints, IList<Square> boardSquares);

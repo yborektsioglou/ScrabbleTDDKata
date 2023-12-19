@@ -5,7 +5,7 @@ using System.Linq;
 namespace Scrabble.Lib.Test
 {
     [TestFixture]
-    public partial class WordScoreTests
+    public class WordScoreTests
     {
         public abstract class WordsTest
         {
