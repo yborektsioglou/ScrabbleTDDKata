@@ -45,7 +45,7 @@ namespace Scrabble.Lib
 
         public override string ToString()
         {
-            return $"{Point} {Type} {(State is Occupied x ? x.Tile.Letter.ToString(CultureInfo.InvariantCulture) : "(vacant)")}";
+            return $"{(State is Occupied x ? x.Tile.Letter.ToString(CultureInfo.InvariantCulture) : "(vacant)")} {Point} {Type} ";
         }
 
         public override bool Equals(object obj)
