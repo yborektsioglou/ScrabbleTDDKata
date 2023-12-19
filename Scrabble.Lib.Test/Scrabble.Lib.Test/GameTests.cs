@@ -383,7 +383,12 @@ namespace Scrabble.Lib.Test
         [Test]
         public void ThenHas7Tiles()
         {
-            LayTheWords();
+            for (var i = 0; i < Words.Count(); ++i)
+            {
+                ScrabbleGame.LayWord(i % 2 == 0 ? "Victoria" : "Albert", Words[i]);
+                ScrabbleGame.AcceptWord();
+            }
+
             foreach (var player in ScrabbleGame.Players)
             {
                 Assert.That(player.Tiles.Count(), Is.EqualTo(7));
@@ -420,7 +425,11 @@ namespace Scrabble.Lib.Test
         [Test]
         public void ThenPlayerReceivesAll()
         {
-            LayTheWords();
+            for (var i = 0; i < Words.Count(); ++i)
+            {
+                ScrabbleGame.LayWord(i % 2 == 0 ? "Victoria" : "Albert", Words[i]);
+                ScrabbleGame.AcceptWord();
+            }
             Assert.That(ScrabbleGame.Players[0].Tiles.Count(), Is.EqualTo(6));
             Assert.That(ScrabbleGame.Players[1].Tiles.Count(), Is.EqualTo(4));
             Assert.That(TileBag.TilesPicked, Is.EqualTo(15));

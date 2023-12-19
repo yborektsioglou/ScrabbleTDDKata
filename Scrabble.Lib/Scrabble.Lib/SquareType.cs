@@ -63,7 +63,7 @@ namespace Scrabble.Lib
 
         public override string ToString()
         {
-            return _description;
+            return _description == "N" ? "" : _description;
         }
     }
 }

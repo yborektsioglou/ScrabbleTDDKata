@@ -30,7 +30,7 @@ namespace Scrabble.Lib.Test
                     ScrabbleGame.LayWord(i % 2 == 0 ? "Victoria" : "Albert", Words[i]);
                     var result = ScrabbleGame.AcceptWord();
                     Assert.That(result.ValidWord, Is.True);
-                    Assert.That(result.PlayerScore, Is.EqualTo(ExpectedScores[i]));
+                    Assert.That(result.PlayerScore, Is.EqualTo(ExpectedScores[i]), $"Unexpected score for player's turn with letters '{string.Join("", Words[i].Select(w=>w.Tile.DisplayLetter))}'");
                 }
             }
         }
@@ -602,83 +602,83 @@ namespace Scrabble.Lib.Test
         #endregion
 
         #region New word intersects an existing word, and creates two additional new words
-//        public class ExtendingMultipleWords : WordsTest
-//        {
-//            /*
-//             Word 1 =
-//              5 6 7 8
-//g            | | | | |
-//h            | | | |A|
-//i            | | | |T|
-//             * 
-//             Word 2 =
-//              5 6 7 8
-//g            | |T|I|C|
-//h            | | | |A|
-//i            | | | |T|
-//             * 
-//             Word 3 =
-//              5 6 7 8
-//g            | |T|I|C|
-//h            | | | |A|
-//i            | |B|U|T|
-//             * 
-//             Word 4 =
-//              5 6 7 8
-//g            | |T|I|C|
-//h            | | | |A|
-//i            | |B|U|T|
-//j            | | | |S|
-//             * 
-//             Word 5 =
-//              5 6 7 8
-//g            | |T|I|C|
-//h            | | | |A|
-//i            | |B|U|T|
-//j            |M|E|S|S|
-//             */
+        //        public class ExtendingMultipleWords : WordsTest
+        //        {
+        //            /*
+        //             Word 1 =
+        //              5 6 7 8
+        //g            | | | | |
+        //h            | | | |A|
+        //i            | | | |T|
+        //             * 
+        //             Word 2 =
+        //              5 6 7 8
+        //g            | |T|I|C|
+        //h            | | | |A|
+        //i            | | | |T|
+        //             * 
+        //             Word 3 =
+        //              5 6 7 8
+        //g            | |T|I|C|
+        //h            | | | |A|
+        //i            | |B|U|T|
+        //             * 
+        //             Word 4 =
+        //              5 6 7 8
+        //g            | |T|I|C|
+        //h            | | | |A|
+        //i            | |B|U|T|
+        //j            | | | |S|
+        //             * 
+        //             Word 5 =
+        //              5 6 7 8
+        //g            | |T|I|C|
+        //h            | | | |A|
+        //i            | |B|U|T|
+        //j            |M|E|S|S|
+        //             */
 
-//            public ExtendingMultipleWords()
-//            {
-//                TilesToSelect = "ATBUMES" + "TICSGHI" + "ABCDEFGHIJK";
-//            }
+        //            public ExtendingMultipleWords()
+        //            {
+        //                TilesToSelect = "ATBUMES" + "TICSGHI" + "ABCDEFGHIJK";
+        //            }
 
-//            [SetUp]
-//            public void CreateWordsAndScores()
-//            {
-//                Words = new[] {
-//                    new[] {
-//                        TilePoint.Create('A', "H8"),
-//                        TilePoint.Create('T', "I8")
-//                    },
-//                    new[] {
-//                        TilePoint.Create('T', "G6"),
-//                        TilePoint.Create('I', "G7"), //DL
-//                        TilePoint.Create('C', "G8")
-//                    },
-//                    new[] {
-//                        TilePoint.Create('B', "I6"),
-//                        TilePoint.Create('U', "I7") //DL
-//                    },
-//                    new[] {
-//                        TilePoint.Create('S', "J8")
-//                    },
-//                    new[] {
-//                        TilePoint.Create('M', "J5"),
-//                        TilePoint.Create('E', "J6"),
-//                        TilePoint.Create('S', "J7")
-//                    }
-//                };
+        //            [SetUp]
+        //            public void CreateWordsAndScores()
+        //            {
+        //                Words = new[] {
+        //                    new[] {
+        //                        TilePoint.Create('A', "H8"),
+        //                        TilePoint.Create('T', "I8")
+        //                    },
+        //                    new[] {
+        //                        TilePoint.Create('T', "G6"),
+        //                        TilePoint.Create('I', "G7"), //DL
+        //                        TilePoint.Create('C', "G8")
+        //                    },
+        //                    new[] {
+        //                        TilePoint.Create('B', "I6"),
+        //                        TilePoint.Create('U', "I7") //DL
+        //                    },
+        //                    new[] {
+        //                        TilePoint.Create('S', "J8")
+        //                    },
+        //                    new[] {
+        //                        TilePoint.Create('M', "J5"),
+        //                        TilePoint.Create('E', "J6"),
+        //                        TilePoint.Create('S', "J7")
+        //                    }
+        //                };
 
-//                ExpectedScores = new[] { 4, 11, 10, 17, 26 };
-//            }
+        //                ExpectedScores = new[] { 4, 11, 10, 17, 26 };
+        //            }
 
-//            [Test]
-//            public void ThenScoresExtendedWords()
-//            {
-//                LayTheWords();
-//            }
-//        }
+        //            [Test]
+        //            public void ThenScoresExtendedWords()
+        //            {
+        //                LayTheWords();
+        //            }
+        //        }
         #endregion
 
         #region Laying all tiles in one go scores a nonus 50 points

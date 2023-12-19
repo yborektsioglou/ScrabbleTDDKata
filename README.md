@@ -2,7 +2,7 @@
 Contains an implementation of the word game Scrabble, but with no scoring implemented. That's your job. This repo is a cut-down version of a complete implementation of Scrabble I created, so domain objects (board, game, player, tile) are complete and not required to be changed as part of the kata.
 
 ## How it works
-Existing tests are implemented as boundary tests, mimicking a game from the initial move. They create a dummy letter bag which serves tiles in a predicatable sequence, and lays those tiles to form words.
+Existing tests are implemented as black box tests tests (https://en.wikipedia.org/wiki/Black-box_testing), mimicking a game from the initial move. The tests create a dummy letter bag which serves tiles in a predicatable sequence, and lays those tiles to form words.
 
 Each test's inputs consists of the tiles to serve, a series of player turns (tiles laid and the squares they're laid on), and the expected scores for each of the turns.
 
