@@ -7,7 +7,7 @@ Existing tests are implemented as black box tests tests (https://en.wikipedia.or
 Each test's inputs consists of the tiles to serve, a series of player turns (tiles laid and the squares they're laid on), and the expected scores for each of the turns.
 
 ## The exercise
-Tests are defined in `Scrabble.Lib.Test.WordScoreTests`. The first one is the only one not commented out, and will fail. Tests are intended to be incremental and should be made to pass in their numbered order.
+Tests are defined in `Scrabble.Lib.Test.WordScoreTests`. The first one is the only one not commented out, and will fail. Tests are intended to be incremental and should be made to pass in their numbered order. Try to stick to the TDD principle of only doing enough code to make the current test pass, as the next one will build on it.
 
 The scoring algorithm should be implemented in `Scrabble.Lib.BoardScoreCalculator`. The single method on the class takes two parameters; a collection of tuples of board squares and tiles to lay on those squares, and a collection of board squares representing the board before the new tiles have been laid. The code path taken in the tests already validates things like the number of tiles laid, whether the squares chosen are valid etc.
 
