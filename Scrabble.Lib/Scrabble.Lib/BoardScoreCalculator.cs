@@ -11,23 +11,36 @@ namespace Scrabble.Lib
         {
             
             bool isLayingHorizontally = laidTiles.Any(t => t.Square.Point.X != laidTiles.First().Square.Point.X);
+            bool isLayingVertically = laidTiles.Any(t => t.Square.Point.Y != laidTiles.First().Square.Point.Y);
             int score = 0;
             int wordFactor = 1;
 
             var extendedScore = 0;
-            extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, true);
-            extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, true);
-            extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, false);
-            extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, false);
+            if (isLayingHorizontally)
+            {
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, true);
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, true);
+            }
+            else if (isLayingVertically)
+            {
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, false);
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, false);
+            }
+            else
+            {
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, true);
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, true);
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, false);
+                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, false);
+            }
 
             foreach ((Square square, Tile tile) in laidTiles)
             {
-                score += tile.Value * square.Type.LetterFactor;
                 if (isLayingHorizontally)
                 {
                     extendedScore += CalculateExtendedScoreAbove((square, tile), boardSquares, true, false);
                 }
-
+                score += tile.Value * square.Type.LetterFactor;
                 wordFactor = Math.Max(wordFactor, square.Type.WordFactor);
             }
 
