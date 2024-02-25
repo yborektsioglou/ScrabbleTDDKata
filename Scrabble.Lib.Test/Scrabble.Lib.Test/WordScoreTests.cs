@@ -383,147 +383,147 @@ namespace Scrabble.Lib.Test
         #endregion
 
         #region Initial word is extended by a horizontal word above
-        //public class ExtendingAWordAbove : WordsTest
-        //{
-        //    /*
-        //     Word 1 =
-        //      F G H
-        //    7| | | |
-        //    8| | |A|
-        //    9| | |T|
-        //     * 
-        //     Word 2 =
-        //      F G H
-        //    7|T|I|C|
-        //    8| | |A|
-        //    9| | |T|
-        //     */
+        public class ExtendingAWordAbove : WordsTest
+        {
+            /*
+             Word 1 =
+              F G H
+            7| | | |
+            8| | |A|
+            9| | |T|
+             * 
+             Word 2 =
+              F G H
+            7|T|I|C|
+            8| | |A|
+            9| | |T|
+             */
 
-        //    public ExtendingAWordAbove()
-        //    {
-        //        TilesToSelect = "ATABCDE" + "TICFGHI" + "ABCDE";
-        //    }
+            public ExtendingAWordAbove()
+            {
+                TilesToSelect = "ATABCDE" + "TICFGHI" + "ABCDE";
+            }
 
-        //    [SetUp]
-        //    public void CreateWordsAndScores()
-        //    {
-        //        Words = new[] {
-        //            new[] {
-        //                TilePoint.Create('A', "H8"),
-        //                TilePoint.Create('T', "H9")
-        //            },
-        //            new[] {
-        //                TilePoint.Create('T', "F7"),
-        //                TilePoint.Create('I', "G7"), //DL
-        //                TilePoint.Create('C', "H7")
-        //            }
-        //        };
+            [SetUp]
+            public void CreateWordsAndScores()
+            {
+                Words = new[] {
+                    new[] {
+                        TilePoint.Create('A', "H8"),
+                        TilePoint.Create('T', "H9")
+                    },
+                    new[] {
+                        TilePoint.Create('T', "F7"),
+                        TilePoint.Create('I', "G7"), //DL
+                        TilePoint.Create('C', "H7")
+                    }
+                };
 
-        //        ExpectedScores = new[] { 4, 11 };
-        //    }
+                ExpectedScores = new[] { 4, 11 };
+            }
 
-        //    [Test]
-        //    public void ThenScoresExtendedWord()
-        //    {
-        //        LayTheWords();
-        //    }
-        //}
+            [Test]
+            public void ThenScoresExtendedWord()
+            {
+                LayTheWords();
+            }
+        }
         #endregion
 
         #region Initial word is extended by a vertical word to the left
-        //public class ExtendingAWordLeft : WordsTest
-        //{
-        //    /*
-        //     Word 1 =
-        //      G H I 
-        //    8| |A|T|
-        //    9| | | |
-        //   10| | | |
-        //     * 
-        //     Word 2 =
-        //      G H I 
-        //    8|R|A|T|
-        //    9|U| | |
-        //   10|B| | |
-        //     */
+        public class ExtendingAWordLeft : WordsTest
+        {
+            /*
+             Word 1 =
+              G H I 
+            8| |A|T|
+            9| | | |
+           10| | | |
+             * 
+             Word 2 =
+              G H I 
+            8|R|A|T|
+            9|U| | |
+           10|B| | |
+             */
 
-        //    public ExtendingAWordLeft()
-        //    {
-        //        TilesToSelect = "ATABCDE" + "RUBFGHI" + "ABCDE";
-        //    }
+            public ExtendingAWordLeft()
+            {
+                TilesToSelect = "ATABCDE" + "RUBFGHI" + "ABCDE";
+            }
 
-        //    [SetUp]
-        //    public void CreateWordsAndScores()
-        //    {
-        //        Words = new[] {
-        //            new[] {
-        //                TilePoint.Create('A', "H8"),
-        //                TilePoint.Create('T', "I8")
-        //            },
-        //            new[] {
-        //                TilePoint.Create('R', "G8"),
-        //                TilePoint.Create('U', "G9"), //DL
-        //                TilePoint.Create('B', "G10")
-        //            }
-        //        };
+            [SetUp]
+            public void CreateWordsAndScores()
+            {
+                Words = new[] {
+                    new[] {
+                        TilePoint.Create('A', "H8"),
+                        TilePoint.Create('T', "I8")
+                    },
+                    new[] {
+                        TilePoint.Create('R', "G8"),
+                        TilePoint.Create('U', "G9"), //DL
+                        TilePoint.Create('B', "G10")
+                    }
+                };
 
-        //        ExpectedScores = new[] { 4, 9 };
-        //    }
+                ExpectedScores = new[] { 4, 9 };
+            }
 
-        //    [Test]
-        //    public void ThenScoresExtendedWord()
-        //    {
-        //        LayTheWords();
-        //    }
-        //}
+            [Test]
+            public void ThenScoresExtendedWord()
+            {
+                LayTheWords();
+            }
+        }
         #endregion
 
         #region Initial word is extended by a vertical word to the right
-        //public class ExtendingAWordRight : WordsTest
-        //{
-        //    /*
-        //     Word 1 =
-        //      H I J
-        //    8|O|R| |
-        //    9| | | |
-        //   10| | | |
-        //     * 
-        //     Word 2 =
-        //      H I J
-        //    8|O|R|B|
-        //    9| | |E|
-        //   10| | |G|
-        //     */
+        public class ExtendingAWordRight : WordsTest
+        {
+            /*
+             Word 1 =
+              H I J
+            8|O|R| |
+            9| | | |
+           10| | | |
+             * 
+             Word 2 =
+              H I J
+            8|O|R|B|
+            9| | |E|
+           10| | |G|
+             */
 
-        //    public ExtendingAWordRight()
-        //    {
-        //        TilesToSelect = "ORABCDE" + "BEGFGHI" + "ABCDE";
-        //    }
+            public ExtendingAWordRight()
+            {
+                TilesToSelect = "ORABCDE" + "BEGFGHI" + "ABCDE";
+            }
 
-        //    [SetUp]
-        //    public void CreateWordsAndScores()
-        //    {
-        //        Words = new[]{
-        //            new[] {
-        //                TilePoint.Create('O', "H8"),
-        //                TilePoint.Create('R', "I8")
-        //            },
-        //            new[] {
-        //                TilePoint.Create('B', "J8"),
-        //                TilePoint.Create('E', "J9"),
-        //                TilePoint.Create('G', "J10") //TL
-        //            }
-        //        };
+            [SetUp]
+            public void CreateWordsAndScores()
+            {
+                Words = new[]{
+                    new[] {
+                        TilePoint.Create('O', "H8"),
+                        TilePoint.Create('R', "I8")
+                    },
+                    new[] {
+                        TilePoint.Create('B', "J8"),
+                        TilePoint.Create('E', "J9"),
+                        TilePoint.Create('G', "J10") //TL
+                    }
+                };
 
-        //        ExpectedScores = new[] { 4, 15 };
-        //    }
+                ExpectedScores = new[] { 4, 15 };
+            }
 
-        //    [Test]
-        //    public void ThenScoresExtendedWord()
-        //    {
-        //        LayTheWords();
-        //    }
-        //}
+            [Test]
+            public void ThenScoresExtendedWord()
+            {
+                LayTheWords();
+            }
+        }
         #endregion
 
         #region Initial word is intersected. Just scores points for the tiles laid (+ bonuses)

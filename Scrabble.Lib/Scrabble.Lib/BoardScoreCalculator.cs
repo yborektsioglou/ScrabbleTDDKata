@@ -16,29 +16,22 @@ namespace Scrabble.Lib
             int wordFactor = 1;
 
             var extendedScore = 0;
-            if (isLayingHorizontally)
-            {
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, true);
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, true);
-            }
-            else if (isLayingVertically)
-            {
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, false);
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, false);
-            }
-            else
-            {
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, true);
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, true);
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, true, false);
-                extendedScore += CalculateExtendedScore(laidTiles, boardSquares, false, false);
-            }
+            extendedScore += CalculateExtendedScoreInline(laidTiles, boardSquares, true, true);
+            extendedScore += CalculateExtendedScoreInline(laidTiles, boardSquares, false, true);
+            extendedScore += CalculateExtendedScoreInline(laidTiles, boardSquares, true, false);
+            extendedScore += CalculateExtendedScoreInline(laidTiles, boardSquares, false, false);
 
             foreach ((Square square, Tile tile) in laidTiles)
             {
                 if (isLayingHorizontally)
                 {
-                    extendedScore += CalculateExtendedScoreAbove((square, tile), boardSquares, true, false);
+                    extendedScore += CalculateExtendedScorePerpendicular((square, tile), boardSquares, true, false);
+                    extendedScore += CalculateExtendedScorePerpendicular((square, tile), boardSquares, false, false);
+                }
+                if (isLayingVertically)
+                {
+                    extendedScore += CalculateExtendedScorePerpendicular((square, tile), boardSquares, true, true);
+                    extendedScore += CalculateExtendedScorePerpendicular((square, tile), boardSquares, false, true);
                 }
                 score += tile.Value * square.Type.LetterFactor;
                 wordFactor = Math.Max(wordFactor, square.Type.WordFactor);
@@ -47,9 +40,16 @@ namespace Scrabble.Lib
             return (score * wordFactor) + extendedScore;
         }
 
-        private static int CalculateExtendedScore(IEnumerable<(Square Square, Tile Tile)> laidTiles, IEnumerable<Square> boardSquares, bool isPrefix, bool isHorizontal)
+        private static int CalculateExtendedScoreInline(IEnumerable<(Square Square, Tile Tile)> laidTiles, IEnumerable<Square> boardSquares, bool isPrefix, bool isHorizontal)
         {
+            bool isLayingHorizontally = laidTiles.Any(t => t.Square.Point.X != laidTiles.First().Square.Point.X);
+            bool isLayingVertically = laidTiles.Any(t => t.Square.Point.Y != laidTiles.First().Square.Point.Y);
             int score = 0;
+
+            if ((isLayingHorizontally && !isHorizontal) || (isLayingVertically && isHorizontal))
+            {
+                return 0;
+            }
 
             int directionFactor = 1;
             if (isPrefix)
@@ -84,7 +84,7 @@ namespace Scrabble.Lib
             return score;
         }
 
-        private static int CalculateExtendedScoreAbove((Square Square, Tile Tile) laidTile, IEnumerable<Square> boardSquares, bool isPrefix, bool isHorizontal)
+        private static int CalculateExtendedScorePerpendicular((Square Square, Tile Tile) laidTile, IEnumerable<Square> boardSquares, bool isPrefix, bool isHorizontal)
         {
             bool extends = false;
             int score = 0;
